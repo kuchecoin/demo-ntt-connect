@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'ASSDAQ Wormhole NTT Connect',
+  title: 'ASSDAQ Bridge',
   description: 'Cross-chain ASSDAQ transfers with Wormhole NTT',
 }
 
