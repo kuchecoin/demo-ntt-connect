@@ -1,13 +1,178 @@
-/* Global CSS Reset and Styles */
+/* ================================
+   Global Reset
+================================ */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html,
-body {
+html, body {
   height: 100%;
-  background-color: #1a1a1a;
-  font-family: Inter, system-ui, sans-serif;
-} 
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden; /* allow vertical scroll */
+  overflow-y: scroll;
+}
+
+/* ================================
+   Background Video
+================================ */
+.video-wrapper-front {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.video-wrapper-front video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================================
+   Dark Gradient Overlay (Top-heavy)
+================================ */
+.video-gradient-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,   /* very dark top */
+    rgba(0, 0, 0, 0.55) 45%,  /* fade midpoint */
+    rgba(4, 204, 242, 0.22) 100%  /* lighter bottom */
+  );
+}
+
+/* ================================
+   Content Container
+================================ */
+.content-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 16px; /* spacing under logo */
+  gap: 0;
+}
+
+.page-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================================
+   Logo
+================================ */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-container img {
+  width: 200px;
+  height: auto;
+}
+
+/* ================================
+   Widget wrapper with glass (stable)
+================================ */
+.widget-wrapper {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;           /* prevent shrink on mobile */
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  z-index: 2;                 /* above overlay */
+  transform: scale(0.9);
+  transform-origin: top center;
+  border-radius: 18px;
+
+  display: flex;              /* center content horizontally */
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;     /* prevent internal padding from resizing */
+}
+
+/* ================================
+   WormholeConnect Glass + stable width
+================================ */
+.wormhole-connect {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  border-radius: 18px !important;
+
+  background: rgba(0, 110, 151, 0.25) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Fix token input / dropdown container width */
+.wormhole-connect .wc-token-input {
+  min-width: 180px;             /* adjust for longest token name */
+}
+
+/* Prevent token icon resizing */
+.wormhole-connect .wc-token-input img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Remove focus outlines inside widget */
+.widget-wrapper *:focus,
+.wormhole-connect *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent glass effect from leaking into inner elements */
+.wormhole-connect * {
+  backdrop-filter: none;
+}
+
+/* ================================
+   Wormhole Footer
+================================ */
+.wormhole-connect-footer,
+.wormhole-connect-footer a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+}
+
+.wormhole-connect-footer a:hover {
+  color: #04ccf2 !important;
+}
+
+/* ================================
+   Responsive: Mobile tweaks
+================================ */
+@media (max-width: 480px) {
+  .logo-container img {
+    width: 140px; /* smaller logo on mobile */
+  }
+
+  .widget-wrapper {
+    transform: scale(0.85); /* slightly smaller widget on mobile */
+  }
+
+  .content-container {
+    margin-top: 8px;
+  }
+}
