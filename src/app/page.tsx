@@ -97,7 +97,9 @@ const wormholeConfig: config.WormholeConnectConfig = {
 
 export default function Home() {
   return (
-    <main style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
+    <main style={{ display: 'flex',
+                   justifyContent: 'center', 
+                   marginTop: '0.5rem' }}>
       <WormholeConnect
         config={wormholeConfig}
         theme={{
